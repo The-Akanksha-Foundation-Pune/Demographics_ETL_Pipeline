@@ -46,11 +46,11 @@ db_config = {
 }
 
 school_names = [
-    "ABMPS", "ANWEMS", "BNMCEMS", "BNPS", "BOPEMS", "CSMEMS",
-    "DNMPS", "KCTVN", "LAPMEMS", "LBBNMCEMS", "LBBNPS", "LDRKEMS",
-    "LGMNPS", "LGRMNMCEMS", "LNMPS", "MEMS", "MLMPS", "MPMMPS",
-    "NMMC93", "NNMPS", "PKGEMS", "RDNMCEMS", "RDNPS", 
-    "RMNMCEMS", "RMNPS"
+    "ABMPS", "ANWEMS", "BNMCEMS", "BOPEMS", "CSMEMS",
+    "DNMPS", "KCTVN", "LAPMEMS", "LBBNMCEMS",  "LDRKEMS",
+    "LGRMNMCEMS", "LNMPS", "MEMS", "MLMPS", "MPMMPS",
+    "NMMC93", "NNMPS", "PKGEMS", "RDNMCEMS", 
+    "RMNMCEMS", "SMCMPS", "SMPS", "WBMPS", "SBP", "SBPMO", "RNMCEMS"
 ]
 
 
@@ -61,16 +61,14 @@ assessment_types = [
     "unit 1 B", "unit 2 B", "unit 3 B", "unit 4 B", "unit 5 B",
     "Unit 1B", "Unit 2B", "Unit 3B", "Unit 4B", "Unit 5B",
     "Weekly 1", "Weekly 2", "Weekly 3", "Weekly 4", "Weekly 5",
-    "Prelim 1", "Prelim 2", "Prelim 3", "Prelim 4", "Prelim 5"]
+    "Prelim 1", "Prelim 2", "Prelim 3", "Prelim 4", "Prelim 5", 
+    "Unit 1", "Unit 2", "Unit 3", "Unit 4", "Unit 5"]
 
 def trim_string(value):
     return html.unescape(str(value).strip()) if isinstance(value, str) else value
 
 def camel_to_snake_case(name):
     return re.sub(r'(?<!^)(?=[A-Z])', '_', name).lower() if isinstance(name, str) else name
-
-import re
-from datetime import datetime
 
 def generate_assessment_id(row):
     # Clean question name: first 2 words only, alphanumeric
@@ -345,5 +343,5 @@ def run_student_level_etl(start_year=2021, assessment_category='Non-Standardized
     logging.info(f"🎯 Total records inserted/updated: {total_records}")
 
 if __name__ == '__main__':
-    run_student_level_etl(start_year=2022, assessment_category='Standardized')
-    run_student_level_etl(start_year=2022, assessment_category='Non-Standardized')
+    run_student_level_etl(start_year=2023, assessment_category='Standardized')
+    run_student_level_etl(start_year=2023, assessment_category='Non-Standardized')
